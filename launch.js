@@ -37,13 +37,24 @@ rl.question(qst, function(ans) {
 
     https.get({
         hostname: API.host,
-        path: API.path,
+        path: API.path + ans,
         headers: {
             'Accept':'application/json',
             'User-Agent':'B01D08'
         }
     }, function(res) {
-        console.log(res);
+        let finalData = '';
+
+        res.on('data', function(d) {
+            finalData+=d;
+        });
+
+        res.on('end', function() {
+            finalData = JSON.parse(finalData);
+
+            console.log(finalData);
+            console.log(Object.keys(finalData));
+        });
     });
 });
 
