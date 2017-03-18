@@ -9,6 +9,8 @@
 
 'use strict';
 
+const MAX_NUM = 10;
+
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -21,7 +23,10 @@ const qst = "Insira a quantidade de lançamentos futuros você deseja " +
 
 rl.question(qst, function(ans) {
     rl.close();
-
-    console.log(ans.trim());
+    ans = Number(ans.trim());
+    if (ans > MAX_NUM) {
+        console.log('Número muito grande!');
+        process.exit();
+    }
 });
 
