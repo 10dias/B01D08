@@ -6,3 +6,22 @@
   * @license MIT
   *
   */
+
+'use strict';
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+const qst = "Insira a quantidade de lançamentos futuros você deseja " +
+    "ver informações\n";
+
+rl.question(qst, function(ans) {
+    rl.close();
+
+    console.log(ans.trim());
+});
+
