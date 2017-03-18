@@ -12,6 +12,12 @@
 const MAX_NUM = 10;
 
 const readline = require('readline');
+const https = require('https');
+
+const API = {
+    host:"launchlibrary.net",
+    path:"/1.2/launch/next/"
+};
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -28,5 +34,16 @@ rl.question(qst, function(ans) {
         console.log('Número muito grande!');
         process.exit();
     }
+
+    https.get({
+        hostname: API.host,
+        path: API.path,
+        headers: {
+            'Accept':'application/json',
+            'User-Agent':'B01D08'
+        }
+    }, function(res) {
+        console.log(res);
+    });
 });
 
