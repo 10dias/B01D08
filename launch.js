@@ -52,8 +52,13 @@ rl.question(qst, function(ans) {
         res.on('end', function() {
             finalData = JSON.parse(finalData);
 
-            console.log(finalData);
-            console.log(Object.keys(finalData));
+            finalData.launches.forEach(function(l) {
+                console.log('###');
+                console.log('Missão ' + l.name);
+                console.log('Abertura da janela para lançamento: ' + l.windowstart);
+                console.log('Fechamento da janela para lançamento: ' + l.windowend);
+                console.log('###');
+            });
         });
     });
 });
